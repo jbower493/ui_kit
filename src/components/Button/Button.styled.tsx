@@ -1,17 +1,26 @@
-import React from 'react'
+import React, { cloneElement } from 'react'
 import styled from 'styled-components'
+import { defaultTheme } from '../../styles/theme'
 import ButtonController, { ButtonBaseProps } from './Button.controller'
 
-const StyledButton = styled.button<ButtonBaseProps>`
-    background-color: blue
+export interface StyledButtonComponentProps extends ButtonBaseProps {
+    color: 'primary' | 'secondary' | 'error'
+}
+
+const StyledButton = styled.button<StyledButtonComponentProps>`
+    background-color: ${({ theme, color }) => theme.colors[color]};
     color: white;
     padding: 7px 15px;
     border: 0;
-    border-radius: 5px;
+    border-radius: ${({ theme }) => theme.borderRadius};
 `
 
-function StyledButtonComponent(props: ButtonBaseProps) {
-    return <ButtonController Button={{ Base: StyledButton }} {...props} />
+StyledButton.defaultProps = {
+    theme: defaultTheme
+}
+
+function StyledButtonComponent({ color, onClick, children }: StyledButtonComponentProps) {
+    return <ButtonController Button={{ Base: (baseProps) => <StyledButton {...baseProps} color={color} /> }} onClick={onClick} children={children} />
 }
 
 export default StyledButtonComponent
