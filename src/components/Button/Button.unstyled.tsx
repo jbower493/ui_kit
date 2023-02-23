@@ -1,7 +1,7 @@
 import React from 'react'
-import ButtonController from './Button.controller'
+import ButtonController, { ButtonBaseProps } from './Button.controller'
 
-function StyledButtonComponent(props) {
+function StyledButtonComponent(props: ButtonBaseProps) {
     return <ButtonController Button={{ Base: (props) => <button {...props} /> }} {...props} />
 }
 

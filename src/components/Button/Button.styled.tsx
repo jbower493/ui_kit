@@ -1,19 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
-import ButtonController from './Button.controller'
+import ButtonController, { ButtonBaseProps } from './Button.controller'
 
-const StyledButton = styled.button`
-    background-color: blue;
+const StyledButton = styled.button<ButtonBaseProps>`
+    background-color: blue
     color: white;
     padding: 7px 15px;
     border: 0;
     border-radius: 5px;
 `
 
-function StyledButtonComponent(props) {
+function StyledButtonComponent(props: ButtonBaseProps) {
     return <ButtonController Button={{ Base: StyledButton }} {...props} />
 }
-
-StyledButtonComponent.defaultProps = {}
 
 export default StyledButtonComponent
