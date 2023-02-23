@@ -14,4 +14,6 @@ function StyledButtonComponent(props) {
     return <ButtonController Button={{ Base: StyledButton }} {...props} />
 }
 
+StyledButtonComponent.defaultProps = {}
+
 export default StyledButtonComponent
